@@ -7,6 +7,7 @@ interface pageProps {}
 const Login: FC<pageProps> = ({}) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
   return (
     <div className="max-w-xl mt-20 mx-auto shadow py-2 px-10 rounded-md bg-slate-400">
       <h2 className="text-center text-white">LOGIN</h2>

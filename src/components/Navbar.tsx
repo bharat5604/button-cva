@@ -5,7 +5,7 @@ interface NavbarProps {}
 
 const Navbar: FC<NavbarProps> = ({}) => {
   return (
-    <header className="bg-blue-600 px-6">
+    <header className="bg-blue-600 px-6 py-4">
       <nav className="flex justify-between ">
         <div className="flex gap-6">
           <Link href="/">Home</Link>
