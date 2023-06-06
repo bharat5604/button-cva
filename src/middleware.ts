@@ -1,12 +1,11 @@
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
 
-// This function can be marked `async` if using `await` inside
-export function middleware(request: NextRequest) {
-  return NextResponse.redirect(new URL("/login", request.url));
+export default function middleware(req: any) {
+  let verify = req.cookies.get("user");
+  let url = req.url;
+  console.log("url", url);
+
+  if (!verify && url.includes("admin")) {
+    return NextResponse.redirect("http://localhost:3000/login");
+  }
 }
-
-// See "Matching Paths" below to learn more
-export const config = {
-  matcher: "/admin/:path*",
-};
