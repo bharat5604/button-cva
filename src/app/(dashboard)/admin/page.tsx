@@ -1,9 +1,13 @@
+"use client";
+import { store } from "@/store";
 import { FC } from "react";
+import { useSelector } from "react-redux";
 
 interface pageProps {}
 
 const Admin: FC<pageProps> = ({}) => {
-  return <div>Admin</div>;
+  const auth = useSelector((state: any) => state.auth.userData);
+  return <div>Admin, {auth.user.accessTokenJWT}</div>;
 };
 
 export default Admin;

@@ -1,16 +1,25 @@
 "use client";
 import Button from "@/components/ui/Button";
+import { RootState, store, AppDispatch } from "@/store";
+import { setAuth } from "@/store/authSlice";
 
 import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
-import { useCookies } from "react-cookie";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 interface pageProps {}
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
+
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 const Login: FC<pageProps> = ({}) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
+  const dispatch = useAppDispatch();
+  const selector = useAppSelector((state) => state.auth.userData);
+
   const router = useRouter();
   const handleLogin = async () => {
     const res = await fetch("http://localhost:8000/api/v1/auth/login", {
@@ -24,10 +33,11 @@ const Login: FC<pageProps> = ({}) => {
       }),
     });
     const user = await res.json();
-    setCookie("user", user);
+    dispatch(setAuth(user));
     router.push("/admin");
-    // console.log("user111", cookies.user.user);
   };
+
+  console.log("selector", selector);
 
   return (
     <div className="max-w-xl mt-20 mx-auto shadow py-2 px-10 rounded-md bg-slate-400">
