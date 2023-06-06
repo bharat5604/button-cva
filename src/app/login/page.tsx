@@ -9,16 +9,16 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 interface pageProps {}
 
-export const useAppDispatch: () => AppDispatch = useDispatch;
+// export const useAppDispatch: () => AppDispatch = useDispatch;
 
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+// export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 const Login: FC<pageProps> = ({}) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const dispatch = useAppDispatch();
-  const selector = useAppSelector((state) => state.auth.userData);
+  const dispatch = useDispatch();
+  const selector = useSelector((state: any) => state.auth.userData);
 
   const router = useRouter();
   const handleLogin = async () => {
