@@ -5,7 +5,7 @@ interface pageProps {}
 const Contact: FC<pageProps> = ({}) => {
   return (
     <div>
-      Using Daisy Ui here
+      Using Daisy Ui here 11111
       <>
         <input type="text" />
         <div className="carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box">
