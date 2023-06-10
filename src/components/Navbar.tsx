@@ -12,6 +12,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
           <Link href="/about">About </Link>
           <Link href="/product">Product</Link>
           <Link href="/admin">Admin</Link>
+          <Link href="/contact">Contact</Link>
         </div>
         <div>
           <Link href="/login">Login</Link>
